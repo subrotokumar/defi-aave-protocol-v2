@@ -7,8 +7,8 @@ require("dotenv").config()
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY
-const POLY_MAINNET_RPC_URL = process.env.POLY_MAINNET_RPC_URL
-const ETH_MAINNET_RPC_URL = process.env.ETH_MAINNET_RPC_URL
+const POLYGON_MAINNET_RPC_URL = process.env.POLYGON_MAINNET_RPC_URL
+const ETHEREUM_MAINNET_RPC_URL = process.env.ETHEREUM_MAINNET_RPC_URL
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
 const POLYGONSCAN_API = process.env.POLYGONSCAN_API
@@ -19,23 +19,19 @@ module.exports = {
     solidity: "0.8.17",
     solidity: {
         compilers: [
-            {
-                version: "0.8.8",
-            },
-            {
-                version: "0.6.12",
-            },
-            {
-                version: "0.4.19",
-            },
+            { version: "0.8.8" },
+            { version: "0.6.12" },
+            { version: "0.4.19" },
+            { version: "0.8.0" },
+            { version: "0.6.0" },
         ],
     },
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
-            // chainId: 31337,
+            chainId: 31337,
             forking: {
-                url: process.env.ETH_MAINNET_RPC_URL,
+                url: process.env.ETHEREUM_MAINNET_RPC_URL,
             },
         },
         polygonMumbai: {
@@ -61,8 +57,8 @@ module.exports = {
         enabled: true,
         currency: "USD",
         outputFile: "gas-report.txt",
-        noColors: true,
-        // coinmarketcap: COINMARKETCAP_API_KEY,
+        noColors: false,
+        // coinmarketcap: COINMARKETCAP_API,
     },
     namedAccounts: {
         deployer: {
